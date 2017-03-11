@@ -1,3 +1,5 @@
+@extends('layout.masters.main')
+@section('page--content')
 <div class="container">
     @include('layout.partials.nav')
     
@@ -11,3 +13,4 @@
     </div>
 
 </div> <!-- /container -->
+@stop

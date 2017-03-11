@@ -7,15 +7,12 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="../../favicon.ico">
+        <link rel="icon" href="favicon.ico">
 
         <title>Navbar Template for Bootstrap</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/app.css" rel="stylesheet" type="text/css"/>
-
-        <!-- Custom styles for this template -->
-        <link href="navbar.css" rel="stylesheet">
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
