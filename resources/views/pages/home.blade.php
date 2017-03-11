@@ -1,7 +1,7 @@
-@extends('layout.masters.main')
+@extends('layouts.masters.main')
 @section('page--content')
 <div class="container">
-    @include('layout.partials.nav')
+    @include('layouts.partials.nav')
     
     <!-- Main component for a primary marketing message or call to action -->
     <div class="jumbotron">
