@@ -25,7 +25,7 @@ class ListMembersController extends Controller
      */
     public function index()
     {
-        $members = DB::table('members')->get();
+        $members = DB::table('members')->get();editmember.blade
        return view('home')->withCharacters($members);
     }
 }

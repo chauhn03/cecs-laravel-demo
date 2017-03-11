@@ -52,5 +52,4 @@ class CreateMemberControllers extends Controller {
         echo 'Facebook: ' . $request->facebook;
         echo 'Create member successfully';
     }
-
 }

@@ -40,7 +40,7 @@
                     </tr>
                     @foreach($characters as $member)
                     <tr>
-                        <td> {{ $member->nickname }}</td>
+                        <td> <a href="{{ route('member_edit', ['id' => $member->id]) }}"> {{ $member->nickname }}</a></td>
                         <td> {{ $member->phone }}</td>
                         <td> {{ $member->email }}</td>
                         <td> <a href="{{ $member->facebook }}"> {{ $member->nickname }}</a></td>
