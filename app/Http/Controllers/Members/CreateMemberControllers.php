@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class CreateMemberControllers extends Controller {
 
     protected function getCreateMember() {
-        return view('members.createmember');
+        return view('members.create');
     }
 
     /**
@@ -27,7 +27,7 @@ class CreateMemberControllers extends Controller {
         }
 
         if ($submitType == 'createAndNew') {
-            return view('members.createmember');
+            return view('members.create');
         }
     }
 

@@ -11,7 +11,7 @@ class EditMemberController extends Controller {
     protected function getMember(int $id) {
         $member = DB::table('members')->where('id', $id)->first();
         $this->printResult($member);
-        return view('members.editmember')->withCharacters($member);
+        return view('members.edit')->withCharacters($member);
     }
 
     /**
