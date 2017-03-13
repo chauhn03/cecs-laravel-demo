@@ -7,8 +7,8 @@
         <div class="col-md-2 sidebar">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Thành viên</a></li>
+                <li><a href="href="{{ route('event_types_list')}}">Events</a></li>
+                <li><a href="href="{{ route('members_list')}}">Thành viên</a></li>
                 <li><a href="#">Export</a></li>
             </ul>
             <ul class="nav nav-sidebar">
