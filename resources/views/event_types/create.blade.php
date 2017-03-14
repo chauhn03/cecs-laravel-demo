@@ -7,76 +7,54 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Create new member</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('post_create_member') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('post_create_event_types') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Full name</label>
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="fullname" type="text" class="form-control" name="fullname" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" required autofocus>
 
-                                @if ($errors->has('fullname'))
+                                @if ($errors->has('name'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('fullname') }}</strong>
+                                    <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="nickname" class="col-md-4 control-label">Nick name</label>
+                            <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <input id="nickname" type="text" class="form-control" name="nickname">
+                                <input id="description" type="text" class="form-control" name="description">
                             </div>
                         </div>
                         
                          <div class="form-group">
-                            <label for="en_name" class="col-md-4 control-label">English name</label>
+                            <label for="place" class="col-md-4 control-label">Place</label>
 
                             <div class="col-md-6">
-                                <input id="en_name" type="text" class="form-control" name="en_name">
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Email</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Phone</label>
-
-                            <div class="col-md-6">
-                                <input id="phone" type="text" name="phone" class="form-control bfh-phone" data-country="US" value="{{ old('name') }}" required>
-                                @if ($errors->has('phone'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('phone') }}</strong>
-                                </span>
-                                @endif
+                                <input id="place" type="text" class="form-control" name="place">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Facebook</label>
+                            <label for="fee" class="col-md-4 control-label">Fee</label>
 
                             <div class="col-md-6">
-                                <input id="facebook" name="facebook" type="text" class="form-control bfh-phone" data-country="US" value="{{ old('name') }}" required>
-                                @if ($errors->has('facebook'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('facebook') }}</strong>
-                                </span>
-                                @endif
+                                <input id="fee" type="number" pattern="^[0-9]" class="form-control"
+                                       name="fee"
+                                       title='Only Number' min="1" step="1">
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="note" class="col-md-4 control-label">Note</label>
+
+                            <div class="col-md-6">
+                                <textarea  id="note" type="text" name="note" class="form-control"></textarea>
                             </div>
                         </div>
 

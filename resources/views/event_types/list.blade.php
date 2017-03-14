@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="col-md-9 col-md-offset-1">
-        <form class="form-horizontal" role="form" method="POST" action="{{ route('delete_members_list') }}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ route('delete_edit_event_list') }}">
             {{ csrf_field() }}
             
             <div class="row">
@@ -36,13 +36,13 @@
                 </div>                       
             </div>
             <div class="row">
-                <a href="{{ route('create_member') }}">
-                    <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                <a href="{{ route('create_event_types') }}">
+                    <button type="button" id="myButton" class="btn btn-primary" autocomplete="off">
                         Add new
                     </button>
                 </a>
 
-                <button type="submit" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                <button type="submit" id="myButton" class="btn btn-primary" autocomplete="off">
                     Delete
                 </button>
             </div>  

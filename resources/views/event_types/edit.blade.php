@@ -5,91 +5,74 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Create new member</div>
+                <div class="panel-heading">Edit event types: {{ $characters->name }}</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('post_member_edit') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('post_edit_event_types') }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
 
-                        <div class="form-group{{ $errors->has('fullname') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Full name</label>
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
                                 <input id="id" value="{{ $characters->id}}" type="hidden" class="form-control" name="id" required autofocus>
-                                <input id="fullname" value="{{ $characters->fullname}}" type="text" class="form-control" name="fullname" required autofocus>
+                                <input id="name" type="text" class="form-control" 
+                                       value="{{ $characters->name}}"
+                                       name="name" required autofocus>
 
-                                </input>
-                                @if ($errors->has('fullname'))
+                                @if ($errors->has('name'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('fullname') }}</strong>
+                                    <strong>{{ $errors->first('name') }}</strong>
                                 </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="nickname" class="col-md-4 control-label">Nick name</label>
+                            <label for="description" class="col-md-4 control-label">Description</label>
 
                             <div class="col-md-6">
-                                <input id="nickname" value="{{ $characters->nickname}}" type="text" class="form-control" name="nickname">
+                                <input id="description" type="text" 
+                                       value="{{ $characters->description}}"
+                                       class="form-control" name="description">
+                            </div>
+                        </div>
+                        
+                         <div class="form-group">
+                            <label for="place" class="col-md-4 control-label">Place</label>
+
+                            <div class="col-md-6">
+                                <input id="place" type="text" 
+                                       value="{{ $characters->defaultPlace}}"
+                                       class="form-control" name="place">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="en_name" class="col-md-4 control-label">English name</label>
+                            <label for="fee" class="col-md-4 control-label">Fee</label>
 
                             <div class="col-md-6">
-                                <input id="en_name" type="text" value="{{ $characters->en_name}}" class="form-control" name="en_name">
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Email</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" value="{{ $characters->email}}" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
-                                @endif
+                                <input id="fee" type="number" 
+                                       value="{{ $characters->defaultFee}}"
+                                       pattern="^[0-9]" class="form-control"
+                                       name="fee"
+                                       title='Only Number' min="1" step="1">
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Phone</label>
+                            <label for="note" class="col-md-4 control-label">Note</label>
 
                             <div class="col-md-6">
-                                <input id="phone" type="text" name="phone" 
-                                       class="form-control bfh-phone" data-country="US" 
-                                       value="{{ $characters->phone}}"
-                                       required>
-                                @if ($errors->has('phone'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('phone') }}</strong>
-                                </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Facebook</label>
-
-                            <div class="col-md-6">
-                                <input id="facebook" name="facebook" type="text" class="form-control bfh-phone" 
-                                       data-country="US" value="{{ $characters->facebook}}" required>
-                                @if ($errors->has('facebook'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('facebook') }}</strong>
-                                </span>
-                                @endif
+                                <textarea  id="note" type="text"
+                                           value="{{ $characters->note}}"
+                                           name="note" class="form-control"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-1 col-md-offset-4">
-                                <a href="{{ route('members_list') }}">
+                                <a href="{{ route('event_types_list') }}">
                                     <button type="button" class="btn btn-primary">
                                         Back
                                     </button>
@@ -97,7 +80,7 @@
                             </div>
 
                             <div class="col-md-1">
-                                <button name="submit" type="submit" class="btn btn-primary" value="save">
+                                <button name="submit" type="submit" class="btn btn-primary" value="create">
                                     Save
                                 </button>
                             </div>

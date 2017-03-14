@@ -19,10 +19,10 @@ class CreateEventTypesTable extends Migration {
         Schema::create('event_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('description');
-            $table->string('defaultPlace');
-            $table->decimal('defaultFee');
-            $table->string('note');
+            $table->string('description')->nullable()->change();
+            $table->string('defaultPlace')->nullable()->change();
+            $table->decimal('defaultFee')->nullable()->change();
+            $table->string('note')->nullable()->change();
             $table->timestamps();
         });
     }

@@ -28,7 +28,7 @@ class ListController extends Controller
 
     public function delete(Request $request) {
         $deletedCheckbox = $request->checkboxDelete;
-        DB::table('members')->whereIn('id', $deletedCheckbox)->delete();
-        return redirect()->route('members_list');
+        DB::table('event_types')->whereIn('id', $deletedCheckbox)->delete();
+        return redirect()->route('event_types_list');
     }
 }
