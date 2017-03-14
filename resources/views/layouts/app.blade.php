@@ -42,8 +42,8 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="nav navbar-nav hidden-sm-up">
+                        <!--@include('partials.nav')-->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -89,7 +89,15 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            
+        </div>
+        <div class="col-md-2 col-md-offset-1 sidebar">
+           @include('partials.nav')
+        </div>
+        <div class="col-md-8">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
