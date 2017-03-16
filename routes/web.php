@@ -27,10 +27,18 @@ Route::post('/home/members', 'Members\CreateMemberControllers@create')->name('po
 Route::post('/home/members/createandnew', 'Members\CreateMemberControllers@createAndNew')->name('post_create_and_new_member');
 Route::put('/home/members/edit', 'Members\EditMemberController@update')->name('post_member_edit');
 
-//Events
+//Event Types
 Route::get('/home/event_types', 'EventTypes\ListController@index')->name('event_types_list');
 Route::get('/home/event_types/create', 'EventTypes\CreateController@get')->name('create_event_types');
 Route::get('/home/event_types/{id}/edit', 'EventTypes\EditController@get')->name('edit_event_types');
 Route::post('/home/event_types', 'EventTypes\CreateController@create')->name('post_create_event_types');
 Route::put('/home/event_types/edit', 'EventTypes\EditController@update')->name('post_edit_event_types');
 Route::post('/home/event_types/delete', 'EventTypes\ListController@delete')->name('delete_edit_event_list');
+
+//Events
+Route::get('/home/events', 'Events\ListController@index')->name('events_list');
+Route::get('/home/events/create', 'Events\CreateController@get')->name('create_event');
+Route::get('/home/events/{id}/edit', 'Events\EditController@get')->name('edit_event');
+Route::post('/home/events', 'Events\CreateController@create')->name('post_create_event');
+Route::put('/home/events/edit', 'Events\EditController@update')->name('post_edit_event');
+Route::post('/home/events/delete', 'Events\ListController@delete')->name('delete_event');
