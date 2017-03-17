@@ -1,0 +1,25 @@
+{
+  "name": "cecs",
+  "homepage": "https://github.com/chauhn03/cecs-laravel-demo",
+  "authors": [
+    "chau.hoang"
+  ],
+  "description": "The application to manage Cecs's members",
+  "main": "index.php",
+  "keywords": [
+    "Cecs",
+    "keyword"
+  ],
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47"
+  }
+}

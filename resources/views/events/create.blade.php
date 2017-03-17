@@ -31,13 +31,15 @@
                 </div>                
 
                 <div class="form-group">
-                    <label for="description" class="col-md-4 control-label">Type</label>
+                    <label for="description" class="col-md-4 control-label">Date Time</label>
 
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" />
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
+                    <div class="col-md-6">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>                               
 
@@ -93,8 +95,11 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(function () {
-        $('#datetimepicker1').datetimepicker();
+    $(document).ready(function () {
+        var dateTimeElement = $('#datetimepicker1');
+        dateTimeElement.datetimepicker();
+        console.log("ready!");
     });
 </script>
+
 @endsection
