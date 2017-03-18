@@ -3,9 +3,9 @@
 @section('content')
 <div class="col-md-10">
     <div class="panel panel-default">
-        <div class="panel-heading">Create new event type</div>
+        <div class="panel-heading">Create new event</div>
         <div class="panel-body">
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('post_create_event_types') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('post_create_event') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -23,21 +23,40 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description" class="col-md-4 control-label">Type</label>
+                    <label for="typeId" class="col-md-4 control-label">Type</label>
 
                     <div class="col-md-6">
-                        <input id="description" type="text" class="form-control" name="description">
+                        <select id="typeId" type="number" class="form-control" name="typeId">
+                            <option value="1">Type 1</option>
+                            <option value="2">Type 2</option>
+                            <option value="3">Type 3</option>
+                            <option value="4">Type 4</option>
+                            <option value="5">Type 5</option>
+                        </select>
                     </div>
                 </div>                
 
-                <div class="form-group">
-                    <label for="description" class="col-md-4 control-label">Date Time</label>
+                <div class="form-group" class="col-md-6">
+                    <label for="description" class="col-md-4 control-label">Date</label>
 
                     <div class="col-md-6">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
+                        <div class='input-group date' id='eventDate'>
+                            <input type='text' class="form-control" name="date" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>                               
+
+                <div class="form-group" class="col-md-6">
+                    <label for="description" class="col-md-4 control-label">Time</label>
+
+                    <div class="col-md-6">
+                        <div class='input-group date' id='eventTime'>
+                            <input type='text' class="form-control" name="time" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
                             </span>
                         </div>
                     </div>
@@ -96,8 +115,15 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        var dateTimeElement = $('#datetimepicker1');
-        dateTimeElement.datetimepicker();
+        var dateTimeElement = $('#eventDate');
+        dateTimeElement.datetimepicker({
+            format: 'DD/MM/YYYY'
+        });
+
+        var dateTimeElement = $('#eventTime');
+        dateTimeElement.datetimepicker({
+            format: 'LT'
+        });
         console.log("ready!");
     });
 </script>

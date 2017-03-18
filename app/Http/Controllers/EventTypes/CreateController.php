@@ -14,9 +14,11 @@ class CreateController extends Controller {
 
     protected function create(Request $request) {
         $submitType = $request->submit;
+        echo 'Date time: '. $request->dateTime;
         $this->insert($request);
         if ($submitType === 'create') {
-            return redirect()->route('event_types_list');
+            return view('event_types.create');
+//            return redirect()->route('event_types_list');
         }
 
         if ($submitType == 'createAndNew') {
