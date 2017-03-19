@@ -23,8 +23,8 @@ class CreateEventsTable extends Migration {
             $table->string('place');
             $table->date('date');
             $table->time('time');
-            $table->decimal('fee');
-            $table->string('note');
+            $table->decimal('fee')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

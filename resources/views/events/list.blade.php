@@ -24,7 +24,7 @@
                 @foreach($characters as $eventType)
                 <tr>
                     <td><input type="checkbox" name="checkboxDelete[]" value="{{ $eventType->id }}"/></td>
-                    <td> <a href="{{ route('edit_event_types', ['id' => $eventType->id]) }}"> {{ $eventType->name }}</a></td>
+                    <td> <a href="{{ route('edit_event', ['id' => $eventType->id]) }}"> {{ $eventType->name }}</a></td>
                     <!--<td> {{ $eventType->typeId }}</td>-->
                     <td> {{ date("d/ m/ Y", strtotime($eventType->date)) }}</td>
                     <td> {{ date("h:i A", strtotime($eventType->time)) }}</td>

@@ -10,7 +10,7 @@ class EditMemberController extends Controller {
 
     protected function getMember(int $id) {
         $member = DB::table('members')->where('id', $id)->first();
-        $this->printResult($member);
+//        $this->printResult($member);
         return view('members.edit')->withCharacters($member);
     }
 
@@ -22,7 +22,7 @@ class EditMemberController extends Controller {
      */
     protected function update(Request $request) {
         $submitType = $request->submit;
-        $this->printResult($request);
+//        $this->printResult($request);
         $this->saveChanges($request);
         return redirect()->route('members_list');
     }

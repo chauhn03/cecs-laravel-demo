@@ -19,11 +19,11 @@ class CreateMembersTable extends Migration {
         Schema::create('members', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fullname');
-            $table->string('nickname');
-            $table->string('en_name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('facebook');
+            $table->string('nickname')->nullable();
+            $table->string('en_name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('facebook')->nullable();
             $table->timestamps();
         });
     }

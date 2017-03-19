@@ -20,10 +20,11 @@ class CreateEventMembersTable extends Migration {
             $table->increments('id');
             $table->string('eventId');
             $table->boolean('memberId');
-            $table->boolean('registered');
-            $table->boolean('attended');
-            $table->boolean('paid');
-            $table->string('note');
+            $table->boolean('invited')->nullable();
+            $table->boolean('registered')->nullable();
+            $table->boolean('attended')->nullable();
+            $table->boolean('paid')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
