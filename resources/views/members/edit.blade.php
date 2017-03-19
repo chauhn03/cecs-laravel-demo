@@ -87,7 +87,7 @@
 
                 <div class="form-group">
                     <div class="col-md-1 col-md-offset-4">
-                        <a href="{{ route('members_list') }}">
+                        <a href="{{ url()->previous() }}">
                             <button type="button" class="btn btn-primary">
                                 Back
                             </button>

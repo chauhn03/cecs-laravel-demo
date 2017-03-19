@@ -42,3 +42,11 @@ Route::get('/home/events/{id}/edit', 'Events\EditController@get')->name('edit_ev
 Route::post('/home/events', 'Events\CreateController@create')->name('post_create_event');
 Route::put('/home/events/edit', 'Events\EditController@update')->name('post_edit_event');
 Route::post('/home/events/delete', 'Events\ListController@delete')->name('delete_event');
+
+//Events
+Route::get('/home/guests/{eventId?}', 'Guests\ListController@index')->name('guests_list');
+Route::get('/home/guests/create/{eventId?}', 'Guests\CreateController@get')->name('create_guest');
+Route::get('/home/guests/{id}/edit', 'Guests\EditController@get')->name('edit_guest');
+Route::post('/home/guests', 'Guests\CreateController@create')->name('post_create_guest');
+Route::put('/home/guests/edit', 'Guests\EditController@update')->name('post_edit_guest');
+Route::post('/home/guests/delete', 'Guests\ListController@delete')->name('delete_guest');

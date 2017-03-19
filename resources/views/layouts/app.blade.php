@@ -26,6 +26,9 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bower_components/moment/min/moment.min.js') }}"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>        
     </head>
@@ -70,7 +73,7 @@
                                     <li>
                                         <a href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
+                document.getElementById('logout-form').submit();">
                                             Change password
                                         </a>
 
@@ -98,15 +101,18 @@
                 </div>
             </nav>
 
-            <div class="container">
+            <div>
+                <div class="col-md-2 col-md-offset-1 sidebar">
+                    @include('partials.nav')
+                </div>
+                <div>
 
+                </div>
+                <div class="col-md-8">
+                    @yield('content')
+                </div>
             </div>
-            <div class="col-md-2 col-md-offset-1 sidebar">
-                @include('partials.nav')
-            </div>
-            <div class="col-md-8">
-                @yield('content')
-            </div>
+
         </div>        
     </body>
 </html>

@@ -30,7 +30,7 @@ class CreateController extends Controller {
         $time = date("H:i:s", strtotime($event->time));
 //        $time = \DateTime::createFromFormat('h:m:s', strtotime($event->time));
         echo $time;
-        DB::table('events')->insert([[
+        $eventId = DB::table('events')->insert([[
         'name' => $event->name,
         'typeId' => $event->typeId,
         'place' => $event->place,
@@ -39,6 +39,18 @@ class CreateController extends Controller {
         'fee' => $event->fee,
         'note' => $event->note
         ]]);
+
+        $this->insertGuests($eventId);
+    }
+
+    private function insertGuests(int $eventId, int $memberId) {
+        $members = DB::table('members')->get();
+        foreach ($members as $member) {
+            $eventId = DB::table('event_members')->insert([[
+            'eventId' => $eventId,
+            'memberId' => $member->id
+            ]]);
+        }
     }
 
 }

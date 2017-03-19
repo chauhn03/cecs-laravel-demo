@@ -32,5 +32,4 @@ class ListMembersController extends Controller {
         DB::table('members')->whereIn('id', $deletedCheckbox)->delete();
         return redirect()->route('members_list');
     }
-
 }
