@@ -30,7 +30,8 @@ class EditController extends Controller {
 
     private function saveChanges($event) {
         $date = \DateTime::createFromFormat('d/m/Y', $event->date);
-        $time = \DateTime::createFromFormat('hh:mm', $event->time);
+        //$time = \DateTime::createFromFormat('hh:mm', $event->time);
+        $time = date("H:i:s", strtotime($event->time));
 
         DB::table('events')->where('id', $event->id)
                 ->update([

@@ -17,8 +17,12 @@ class ListController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-        $event_types = DB::table('events')->get();
+    public function index() {        
+        $event_types = DB::table('events')
+                ->orderBy('date', 'desc')
+                ->orderBy('time', 'asc')
+                ->get();
+//        dd($event_types);
         return view('events.list')->withCharacters($event_types);
     }
 

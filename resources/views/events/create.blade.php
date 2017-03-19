@@ -27,11 +27,12 @@
 
                     <div class="col-md-6">
                         <select id="typeId" type="number" class="form-control" name="typeId">
-                            <option value="1">Type 1</option>
-                            <option value="2">Type 2</option>
-                            <option value="3">Type 3</option>
-                            <option value="4">Type 4</option>
-                            <option value="5">Type 5</option>
+                            @foreach($event_types as $event_type)
+                            <option 
+                                value="{{ $event_type->id }}">
+                                {{ $event_type->name }}
+                            </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>                

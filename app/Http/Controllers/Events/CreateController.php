@@ -9,7 +9,8 @@ use App\Http\Controllers\Controller;
 class CreateController extends Controller {
 
     protected function get() {
-        return view('events.create');
+        $event_types = DB::table('event_types')->get();
+        return view('events.create')->with('event_types', $event_types);
     }
 
     protected function create(Request $request) {
@@ -26,8 +27,9 @@ class CreateController extends Controller {
 
     private function insert($event) {
         $date = \DateTime::createFromFormat('d/m/Y', $event->date);
-        $time = \DateTime::createFromFormat('hh:mm', $event->time);
-        echo $event->place;
+        $time = date("H:i:s", strtotime($event->time));
+//        $time = \DateTime::createFromFormat('h:m:s', strtotime($event->time));
+        echo $time;
         DB::table('events')->insert([[
         'name' => $event->name,
         'typeId' => $event->typeId,
