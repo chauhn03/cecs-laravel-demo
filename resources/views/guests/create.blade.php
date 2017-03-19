@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-md-10">
+<div class="col-md-11">
     <div class="panel panel-default">
         <div class="panel-heading">Add a member to the event "{{ $event-> name}}"</div>
         <div class="panel-body">
@@ -9,21 +9,41 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <label for="name" class="col-md-1 control-label">Name: </label>
-                    <div class="col-md-6">
-                        <input id="txtSearchMember" class="form-control autocomplete" placeholder="Enter A" />
-                    </div>
-                    <div class="col-md-2">
+                    <!--<label for="name" class="col-md-1 control-label">Name: </label>-->
+                    <div class="col-md-12">
+                        <input id="txtSearchMember" class="form-control autocomplete" placeholder="Enter full name/ nick name/ phone" />
+                    </div>       
+
+<!--                    <div class="col-md-1">
                         <a href="{{ route('create_member') }}">
-                            <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+                            <button type="button" id="myButton" class="btn btn-default" autocomplete="off">
                                 New member
                             </button>
                         </a>
-                    </div>
-                    <div class="col-md-2">
+                    </div>-->
+                </div>
+
+                <div class="form-group">
+<!--                    <div class="col-md-2 col-md-offset-1">
+                        <a href="{{ route('create_member') }}">
+                            <button type="button" id="myButton" class="btn btn-link" autocomplete="off">
+                                New member
+                            </button>
+                        </a>
+                    </div>-->
+
+                    <div class="col-md-1">
                         <button type="submit" id="btnPaid" disabled="false" id="myButton" class="btn btn-primary" autocomplete="off">
                             Paid
                         </button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a href="{{ route('create_member') }}">
+                            <button type="button" id="myButton" class="btn btn-default" autocomplete="off">
+                                New member
+                            </button>
+                        </a>
                     </div>
                 </div>
             </form>
