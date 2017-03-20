@@ -5,32 +5,34 @@
     <div class="panel panel-default">
         <div class="panel-heading">Add a member to the event "{{ $event-> name}}"</div>
         <div class="panel-body">
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('post_create_member') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('post_create_guest') }}">
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <!--<label for="name" class="col-md-1 control-label">Name: </label>-->
                     <div class="col-md-12">
                         <input id="txtSearchMember" class="form-control autocomplete" placeholder="Enter full name/ nick name/ phone" />
+                        <input id="eventId" type="hidden" value="{{ $event->id }}" class="form-control" name="eventId" required autofocus>
+                        <input id="memberId" type="hidden" class="form-control" name="memberId" required autofocus>
                     </div>       
 
-<!--                    <div class="col-md-1">
-                        <a href="{{ route('create_member') }}">
-                            <button type="button" id="myButton" class="btn btn-default" autocomplete="off">
-                                New member
-                            </button>
-                        </a>
-                    </div>-->
+                    <!--                    <div class="col-md-1">
+                                            <a href="{{ route('create_member') }}">
+                                                <button type="button" id="myButton" class="btn btn-default" autocomplete="off">
+                                                    New member
+                                                </button>
+                                            </a>
+                                        </div>-->
                 </div>
 
                 <div class="form-group">
-<!--                    <div class="col-md-2 col-md-offset-1">
-                        <a href="{{ route('create_member') }}">
-                            <button type="button" id="myButton" class="btn btn-link" autocomplete="off">
-                                New member
-                            </button>
-                        </a>
-                    </div>-->
+                    <!--                    <div class="col-md-2 col-md-offset-1">
+                                            <a href="{{ route('create_member') }}">
+                                                <button type="button" id="myButton" class="btn btn-link" autocomplete="off">
+                                                    New member
+                                                </button>
+                                            </a>
+                                        </div>-->
 
                     <div class="col-md-1">
                         <button type="submit" id="btnPaid" disabled="false" id="myButton" class="btn btn-primary" autocomplete="off">
@@ -71,11 +73,19 @@
         });
     }
 
-    function onAutoCompleteBoxchange(searchString) {
+    function onAutoCompleteBoxchange() {
         var txtSearchMember = document.getElementById("txtSearchMember");
         var value = txtSearchMember.value;
         var memberId = getMemberId(value);
         disablePaidButton(memberId < 1);
+        if (memberId > 1) {
+            setMemberIdToInput(memberId);
+        }
+    }
+
+    function setMemberIdToInput(memberId) {
+        var hiddenInput = document.getElementById("memberId");
+        hiddenInput.value = memberId;
     }
 
     function disablePaidButton(disable) {

@@ -22,26 +22,25 @@ class ListController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(int $eventId = 1) {
+    public function index(int $eventId = 40) {
         if ($eventId === null) {
             $eventId = DB::table('events')->orderBy('created_at', 'desc')->first();
         }
 
         $members = DB::table('members')->get();
         $guests = DB::table('event_members')
-                ->join('members', 'event_members.id', '=', 'members.id')
+                ->join('members', 'event_members.memberId', '=', 'members.id')
                 ->where('eventId', $eventId)
                 ->select('event_members.*', 'members.nickname')
                 ->get();
-        
+
         $events = DB::table('events')->get();
-        $event = DB::table('events')->where('id', 40)->first();
-//        dd($event);
+        $event = DB::table('events')->where('id', $eventId)->first();
         return view('guests.list')
                         ->with("selectEvent", $event)
                         ->with("members", $members)
                         ->with("guests", $guests)
-                        ->with('$events', $events);
+                        ->with('events', $events);
     }
 
     public function guestsOfEvent(int $eventId) {
@@ -55,8 +54,10 @@ class ListController extends Controller {
                         ->with('events', $events);
     }
 
-    public function insertGuests(Request $request) {
-        
+    public function delete(Request $request) {
+        $deletedCheckbox = $request->checkboxDelete;
+        DB::table('event_members')->whereIn('id', $deletedCheckbox)->delete();
+        return redirect()->route('guests_list');
     }
 
 }
