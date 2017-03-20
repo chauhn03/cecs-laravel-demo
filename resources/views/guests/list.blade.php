@@ -38,31 +38,15 @@
                     <th></th>
                     <th>Name</th>
                     <!--<th>Type</th>-->
-                    <th>Attended</th>
-                    <th>Paid</th>
+                    <th>Status</th>
                     <th>Note</th>
                     <!--<th>Note</th>-->
                 </tr>
                 @foreach($guests as $guest)
                 <tr>             
                     <td><input type="checkbox" name="checkboxDelete[]" value="{{ $guest->id }}"/></td>
-                    <td> <a href="{{ route('member_edit', ['id' => $guest->memberId]) }}"> {{ $guest->nickname }}</a></td>
-                    <td><input type="checkbox" 
-                        <?php
-                        if ($guest->attended) {
-                            echo("checked");
-                        }
-                        ?> 
-                               name="checkboxAttended[]" 
-                               value="{{ $guest->id }}"/></td>
-                    <td><input type="checkbox" 
-                        <?php
-                        if ($guest->paid) {
-                            echo("checked");
-                        }
-                        ?> 
-                               name="checkboxPaid[]" 
-                               value="{{ $guest->id }}"/></td>
+                    <td> <a href="{{ route('edit_guest', ['id' => $guest->id]) }}"> {{ $guest->nickname }}</a></td>
+                    <td>{{ $guest->status }}</td>
                     <td> {{ $guest->note }}</td>
                 </tr>
                 @endforeach

@@ -28,10 +28,11 @@ class ListController extends Controller {
         }
 
         $members = DB::table('members')->get();
-        $guests = DB::table('event_members')
-                ->join('members', 'event_members.memberId', '=', 'members.id')
+        $guests = DB::table('guests')
+                ->join('members', 'guests.memberId', '=', 'members.id')
+                ->join('guest_status', 'guests.statusId', '=', 'guest_status.id')
                 ->where('eventId', $eventId)
-                ->select('event_members.*', 'members.nickname')
+                ->select('guests.*', 'members.nickname', 'guest_status.name as status')
                 ->get();
 
         $events = DB::table('events')->get();
@@ -56,7 +57,7 @@ class ListController extends Controller {
 
     public function delete(Request $request) {
         $deletedCheckbox = $request->checkboxDelete;
-        DB::table('event_members')->whereIn('id', $deletedCheckbox)->delete();
+        DB::table('guests')->whereIn('id', $deletedCheckbox)->delete();
         return redirect()->route('guests_list');
     }
 

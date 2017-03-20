@@ -11,25 +11,24 @@ class CreateController extends Controller {
     public function get(int $eventId = 1) {
         $event = DB::table('events')->where('id', $eventId)->first();
         $members = DB::table('members')->get();
+        $guest_status = DB::table('guest_status')->get();
         return view('guests.create')
                         ->with('members', $members)
+                        ->with('statuses', $guest_status)
                         ->with('event', $event);
     }
 
     protected function create(Request $request) {
-        $this->insert($request->eventId, $request->memberId);
+        $this->insert($request);
         return redirect()->route('guests_list', ['eventId' => $request->eventId]);
     }
 
-    private function insert(int $eventId, int $memberId) {
-        echo 'EventId: ' . $eventId . '; MemberId: ' . $memberId;
-        $eventId = DB::table('event_members')->insert([[
-        'eventId' => $eventId,
-        'memberId' => $memberId,
-        'invited' => true,
-        'registered' => true,
-        'attended' => true,
-        'paid' => true
+    private function insert(Request $request) {
+        $eventId = DB::table('guests')->insert([[
+        'eventId' => $request->eventId,
+        'memberId' => $request->memberId,
+        'statusId' => $request->statusId,
+        'note' => $request->note
         ]]);
     }
 

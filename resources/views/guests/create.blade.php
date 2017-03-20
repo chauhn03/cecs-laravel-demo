@@ -9,13 +9,19 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                    <!--<label for="name" class="col-md-1 control-label">Name: </label>-->
-                    <div class="col-md-12">
+                    <label for="name" class="col-md-1 control-label">Guest: </label>
+                    <div class="col-md-8">
                         <input id="txtSearchMember" class="form-control autocomplete" placeholder="Enter full name/ nick name/ phone" />
                         <input id="eventId" type="hidden" value="{{ $event->id }}" class="form-control" name="eventId" required autofocus>
                         <input id="memberId" type="hidden" class="form-control" name="memberId" required autofocus>
                     </div>       
-
+                    <div class="col-md-2">
+                        <a href="{{ route('create_member') }}">
+                            <button type="button" id="myButton" class="btn btn-default" autocomplete="off">
+                                New member
+                            </button>
+                        </a>
+                    </div>
                     <!--                    <div class="col-md-1">
                                             <a href="{{ route('create_member') }}">
                                                 <button type="button" id="myButton" class="btn btn-default" autocomplete="off">
@@ -26,6 +32,28 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="typeId" class="col-md-1 control-label">Status</label>
+
+                    <div class="col-md-6">
+                        <select id="statusId" type="number" class="form-control" name="statusId">
+                            @foreach($statuses as $status)
+                            <option 
+                                value="{{ $status->id }}">
+                                {{ $status->name }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>      
+
+                <div class="form-group">                    
+                    <label for="note" class="col-md-1 control-label">Note</label>
+                    <div class="col-md-11">
+                        <textarea  id="note" type="text" name="note" class="form-control"></textarea>
+                    </div>
+                </div>                
+
+                <div class="form-group">
                     <!--                    <div class="col-md-2 col-md-offset-1">
                                             <a href="{{ route('create_member') }}">
                                                 <button type="button" id="myButton" class="btn btn-link" autocomplete="off">
@@ -34,19 +62,11 @@
                                             </a>
                                         </div>-->
 
-                    <div class="col-md-1">
+                    <div class="col-md-1 col-md-offset-1">
                         <button type="submit" id="btnPaid" disabled="false" id="myButton" class="btn btn-primary" autocomplete="off">
-                            Paid
+                            Create
                         </button>
-                    </div>
-
-                    <div class="col-md-2">
-                        <a href="{{ route('create_member') }}">
-                            <button type="button" id="myButton" class="btn btn-default" autocomplete="off">
-                                New member
-                            </button>
-                        </a>
-                    </div>
+                    </div>                   
                 </div>
             </form>
         </div>
