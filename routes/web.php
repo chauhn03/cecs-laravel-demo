@@ -45,7 +45,7 @@ Route::post('/home/events/delete', 'Events\ListController@delete')->name('delete
 
 //Events
 Route::get('/home/guests/{eventId?}', 'Guests\ListController@index')->name('guests_list');
-Route::get('/home/guests/create/{eventId?}', 'Guests\CreateController@get')->name('create_guest');
+Route::get('/home/guests/create/{eventId?}/{statusId?}', 'Guests\CreateController@get')->name('create_guest');
 Route::get('/home/guests/{id}/edit', 'Guests\EditController@get')->name('edit_guest');
 Route::post('/home/guests', 'Guests\CreateController@create')->name('post_create_guest');
 Route::put('/home/guests/edit', 'Guests\EditController@update')->name('post_edit_guest');

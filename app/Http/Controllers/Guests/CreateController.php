@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class CreateController extends Controller {
 
-    public function get(int $eventId = 1) {
+    public function get(int $eventId = 1, int $statusId = 3) {
         $event = DB::table('events')->where('id', $eventId)->first();
         $members = DB::table('members')->get();
         $guest_status = DB::table('guest_status')->get();
         return view('guests.create')
+                        ->with('statusId', $statusId)
                         ->with('members', $members)
                         ->with('statuses', $guest_status)
                         ->with('event', $event);
@@ -20,7 +21,15 @@ class CreateController extends Controller {
 
     protected function create(Request $request) {
         $this->insert($request);
-        return redirect()->route('guests_list', ['eventId' => $request->eventId]);
+        $submitType = $request->submit;
+
+        if ($submitType === 'create') {
+            return redirect()->route('guests_list', ['eventId' => $request->eventId]);
+        }
+        
+        if ($submitType == 'createAndNew') {
+            return redirect()->route('create_guest', ['eventId' => $request->eventId, 'statusId' => $request->statusId]);
+        }
     }
 
     private function insert(Request $request) {

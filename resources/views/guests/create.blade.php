@@ -37,7 +37,11 @@
                     <div class="col-md-6">
                         <select id="statusId" type="number" class="form-control" name="statusId">
                             @foreach($statuses as $status)
-                            <option 
+                            <option   <?php
+                            if ($statusId == $status->id) {
+                                echo("selected");
+                            }
+                            ?> 
                                 value="{{ $status->id }}">
                                 {{ $status->name }}
                             </option>
@@ -62,11 +66,19 @@
                                             </a>
                                         </div>-->
 
-                    <div class="col-md-1 col-md-offset-1">
-                        <button type="submit" id="btnPaid" disabled="false" id="myButton" class="btn btn-primary" autocomplete="off">
+                    <div class="col-md-2 col-md-offset-1">
+                        <button type="submit" id="btnPaid" disabled name="submitType" 
+                                value="create"
+                                id="myButton" class="btn btn-primary" autocomplete="off">
                             Create
                         </button>
-                    </div>                   
+                    </div>  
+
+                    <div class="col-md-2">
+                        <button name="submit" id="btnXCreateAndNew" type="submit" disabled name="submitType" class="btn btn-primary" value="createAndNew">
+                            Create new
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -111,6 +123,9 @@
     function disablePaidButton(disable) {
         var buttonPaid = document.getElementById("btnPaid");
         buttonPaid.disabled = disable;
+        
+        var buttonCreateAndNew = document.getElementById("btnXCreateAndNew");
+        buttonCreateAndNew.disabled = disable;
     }
 
     function getMemberId(searchString) {
